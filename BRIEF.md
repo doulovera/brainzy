@@ -13,6 +13,7 @@ Es una aplicación para listar y trackear el progreso de un libro, película o s
   - Categoría (ficción, biográfico, etc) (personalizable)
   - Sinopsis
   - Por dónde se está consumiendo
+  - Número de páginas/capítulos/duración
   - *Más campos personalizados*
   - Checkbox de si ya se consumió o se está consumiendo
   - Si el checkbox está marcado, mostrar lo siguiente

@@ -1,7 +1,7 @@
 # Brainzy brief
 
 ## Descripción
-Es una aplicación para almacenar y trackear el progreso de un libro, película o serie que estés consumiendo actualmente.
+Es una aplicación para listar y trackear el progreso de un libro, película o serie que estés consumiendo actualmente.
 
 - A través de una vista de kanban se pasa el contenido a cada categoría (not started, started, finished).
 - Se deben almacenar los contenidos agrupándolos según si es un libro, película o serie, en una página.
@@ -13,6 +13,7 @@ Es una aplicación para almacenar y trackear el progreso de un libro, película 
   - Categoría (ficción, biográfico, etc) (personalizable)
   - Sinopsis
   - Por dónde se está consumiendo
+  - Número de páginas/capítulos/duración
   - *Más campos personalizados*
   - Checkbox de si ya se consumió o se está consumiendo
   - Si el checkbox está marcado, mostrar lo siguiente

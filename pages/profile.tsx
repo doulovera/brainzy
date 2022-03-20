@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 const User: NextPage = () => {
-  const router = useRouter();
-  const { user } = router.query;
+  const router = useRouter()
+  const { user } = router.query
 
   return (
     <div>

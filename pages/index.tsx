@@ -1,5 +1,5 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
+import type { NextPage } from 'next'
+import Head from 'next/head'
 import styles from '@styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           <a href="https://github.com/doulovera/brainzy/" target="_blank" rel="noopener noreferrer">
             Github Repo!
           </a>
-          
+
           <a href="https://twitter.com/doulovera" target="_blank" rel="noopener noreferrer">
             @doulovera&apos;s twitter
           </a>

@@ -8,10 +8,10 @@ git clone git@github.com:doulovera/brainzy.git
 ```
 
 ```bash
-yarn
+npm install
 ```
 
 ## Start project
 ```bash
-yarn dev
+npm run dev
 ```

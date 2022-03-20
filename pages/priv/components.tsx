@@ -1,8 +1,7 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
+import Head from 'next/head'
 import { Book } from '@icons/index'
 
-import InfoCard from '@components/InfoCard';
+import InfoCard from '@components/InfoCard'
 
 const components = () => {
   return (

@@ -1,13 +1,28 @@
-import './PageLayout.css'
+import React from 'react';
+import Link from 'next/link';
+// import { Burger } from '@components/icons';
 
-export default function PageLayout () {
+type Props = {
+  children: React.ReactNode,
+}
+
+export default function PageLayout ({ children }: Props) {
   return (
-    <div>
+    <div className="page__container">
       <header>
-        <nav>
-
+        <nav className="navbar_test">
+          <div className="page__navbar-side page__navbar-side--empty"></div>
+          <Link href="/dashboard/home">
+            <a>
+              Brainzy
+            </a>
+          </Link>
+          <div className="page__navbar-side">
+            <button></button>
+          </div>
         </nav>
       </header>
+      {children}
     </div>
-  )
+  );
 }

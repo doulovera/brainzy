@@ -1,18 +1,12 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '@styles/Home.module.css'
+import type { NextPage } from 'next';
+import PageLayout from '@components/shared/PageLayout';
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-      <div className={styles.main}>
+    <PageLayout>
+      asd
+    </PageLayout>
+  );
+};
 
-      </div>
-    </>
-  )
-}
-
-export default Home
+export default Home;

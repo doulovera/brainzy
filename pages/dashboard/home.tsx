@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import PageLayout from '@components/shared/PageLayout';
+import DashboardLayout from '@components/DashboardLayout';
 
 const Home: NextPage = () => {
   return (
-    <PageLayout>
-      asd
-    </PageLayout>
+    <DashboardLayout>
+      hola mundo
+    </DashboardLayout>
   );
 };
 

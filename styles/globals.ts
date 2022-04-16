@@ -14,6 +14,8 @@ export const GlobalStyles = createGlobalStyle<{theme: ThemeType}>`
     --bg-secondary: #${({ theme }) => theme.bgSecondary};
     --font-primary: ${({ theme }) => theme.fontPrimary};
     --font-secondary: ${({ theme }) => theme.fontSecondary};
+
+    --header-height: 5rem;
   }
 
 

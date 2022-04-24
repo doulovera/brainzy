@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle<{theme: ThemeType}>`
 
   :root {
     --bg-primary: ${({ theme }) => theme.bgPrimary};
-    --bg-secondary: #${({ theme }) => theme.bgSecondary};
+    --bg-secondary: ${({ theme }) => theme.bgSecondary};
     --font-primary: ${({ theme }) => theme.fontPrimary};
     --font-secondary: ${({ theme }) => theme.fontSecondary};
 
@@ -34,5 +34,9 @@ export const GlobalStyles = createGlobalStyle<{theme: ThemeType}>`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .icon.icon-tabler {
+    font-size: 1.4rem;
   }
 `;

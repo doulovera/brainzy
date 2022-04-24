@@ -3,7 +3,7 @@ import { HeaderStyled } from './header.style';
 export default function Header () {
   return (
     <HeaderStyled>
-      🧠 Brainzy
+      <h1>🧠 Brainzy</h1>
     </HeaderStyled>
   );
 }

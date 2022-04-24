@@ -6,24 +6,37 @@ import { useStore } from 'store/theme';
 import { GlobalStyles } from '@styles/globals';
 import { darkMode, lightMode } from '@styles/colors';
 // styles
-import { WrapperStyled } from './layout.style';
+import { ContentStyled, WrapperStyled } from './layout.style';
 // components
 import Header from '@components/shared/Header';
+import Sidebar from '@components/shared/Sidebar';
+import Head from 'next/head';
 
 type Props = {
   children: React.ReactNode,
+  title?: string;
 }
 
-export default function DashboardLayout ({ children }: Props) {
+export default function DashboardLayout ({ children, title = 'Dashboard' }: Props) {
   const { theme } = useStore();
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkMode : lightMode}>
-      <GlobalStyles />
-      <WrapperStyled>
-        <Header />
-        {children}
-      </WrapperStyled>
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>{title} - Brainzy</title>
+      </Head>
+      <ThemeProvider theme={theme === 'dark' ? darkMode : lightMode}>
+        <GlobalStyles />
+        <WrapperStyled>
+          <Header />
+          <ContentStyled>
+            <Sidebar />
+            <div className="content-children-container">
+              {children}
+            </div>
+          </ContentStyled>
+        </WrapperStyled>
+      </ThemeProvider>
+    </>
   );
 }

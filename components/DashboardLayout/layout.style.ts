@@ -5,16 +5,16 @@ export const WrapperStyled = styled.div`
   padding-top: var(--header-height);
   color: var(--font-primary);
   background-color: var(--bg-primary);
+
 `;
 
-/*: root {
-  --max-w-padding: 15px;
-  --content-max-width: 900px;
-  --bg-color: #171923;
-  --bg-light: #232535;
-  --font-color: #c5cddb;
-  --font-light: #ffffff;
-  --button-color: #fff;
-  --font-color-inverted: #3d3d3d;
-  --invert-image: 1;
-} */
+export const ContentStyled = styled.div`
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  
+  .content-children-container {
+    width: 100%;
+  }
+`;

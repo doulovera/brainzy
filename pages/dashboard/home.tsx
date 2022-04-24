@@ -3,7 +3,7 @@ import DashboardLayout from '@components/DashboardLayout';
 
 const Home: NextPage = () => {
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Home">
       hola mundo
     </DashboardLayout>
   );

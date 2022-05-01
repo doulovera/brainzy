@@ -1,6 +1,6 @@
 import { Book, Game, Home, Television, User } from '@components/icons';
 import { AsideStyled } from './sidebar.style';
-import Item from '@components/Sidebar/Item';
+import Item from '@components/shared/Sidebar/Item';
 
 const DASHBOARD_ROUTE = '/dashboard';
 

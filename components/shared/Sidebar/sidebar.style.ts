@@ -5,12 +5,12 @@ export const AsideStyled = styled.aside`
   position: fixed;
   bottom: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-direction: row;
-  height: calc(var(--header-height) / 1.2);
+  align-items: center;
+  justify-content: center;
+  height: var(--header-height);
   width: 100%;
-
+  background-color: var(--bg-primary);
   border-top: 2px solid var(--bg-secondary);
 
   & > a {
@@ -39,15 +39,13 @@ export const AsideStyled = styled.aside`
   }
 
   @media ${device.tablet} {
-    position: relative;
-    bottom: auto;
-    justify-content: flex-start;
-    align-items: flex-start;
+    left: 0;
     flex-direction: column;
-    height: 100%;
-    max-width: var(--header-height);
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: calc(100% - var(--header-height));
     width: var(--header-height);
-    
-    border-top: 0;
+    border: 0;
+
   }
 `;

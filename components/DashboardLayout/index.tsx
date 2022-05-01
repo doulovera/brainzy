@@ -25,15 +25,15 @@ export default function DashboardLayout ({ children, title = 'Dashboard' }: Prop
       <Head>
         <title>{title} - Brainzy</title>
       </Head>
-      <ThemeProvider theme={theme === 'dark' ? darkMode : lightMode}>
+      <ThemeProvider theme={(theme === 'dark') ? darkMode : lightMode}>
         <GlobalStyles />
         <WrapperStyled>
           <Header />
           <ContentStyled>
             <Sidebar />
-            <div className="content-children-container">
+            <main>
               {children}
-            </div>
+            </main>
           </ContentStyled>
         </WrapperStyled>
       </ThemeProvider>

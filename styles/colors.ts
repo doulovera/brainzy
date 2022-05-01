@@ -6,8 +6,8 @@ export const darkMode = {
 };
 
 export const lightMode = {
-  bgPrimary: '#dcdaca',
-  bgSecondary: '#ffffff',
+  bgSecondary: '#dcdaca',
+  bgPrimary: '#ffffff',
   fontPrimary: '#202020',
   fontSecondary: '#3d3d3d',
 };

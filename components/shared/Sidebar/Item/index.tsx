@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type Props = {
   children: React.ReactNode,
@@ -7,10 +8,12 @@ type Props = {
 }
 
 export default function Item ({ children, href }: Props) {
+  const router = useRouter();
+
   return (
     <Link href={href}>
       <a>
-        <div>
+        <div className={router.pathname === href ? 'active' : ''}>
           {children}
         </div>
       </a>

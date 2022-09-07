@@ -1,38 +1,44 @@
-import { Book, Game, Home, Television, User } from '@components/icons';
 import { AsideStyled } from './sidebar.style';
 import Item from '@components/shared/Sidebar/Item';
+import {
+  // BookOpen,
+  // GameController,
+  House,
+  TelevisionSimple,
+  User,
+} from 'phosphor-react';
 
 const DASHBOARD_ROUTE = '/dashboard';
 
 const Items = [
   {
     href: `${DASHBOARD_ROUTE}/home`,
-    icon: <Home />,
+    icon: House,
   },
-  {
-    href: `${DASHBOARD_ROUTE}/books`,
-    icon: <Book />,
-  },
+  // {
+  //   href: `${DASHBOARD_ROUTE}/books`,
+  //   icon: BookOpen,
+  // },
   {
     href: `${DASHBOARD_ROUTE}/shows`,
-    icon: <Television />,
+    icon: TelevisionSimple,
   },
-  {
-    href: `${DASHBOARD_ROUTE}/games`,
-    icon: <Game />,
-  },
+  // {
+  //   href: `${DASHBOARD_ROUTE}/games`,
+  //   icon: GameController,
+  // },
   {
     href: '/profile',
-    icon: <User />,
+    icon: User,
   },
 ];
 
 export default function Sidebar () {
   return (
     <AsideStyled>
-      {Items.map(({ href, icon }, index) => (
+      {Items.map(({ href, icon: Icon }, index) => (
         <Item key={index} href={href}>
-          {icon}
+          <Icon size={24} />
         </Item>
       ))}
     </AsideStyled>

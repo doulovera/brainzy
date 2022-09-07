@@ -31,6 +31,9 @@ export const AsideStyled = styled.aside`
       border-radius: 6px;
       transition: background-color 0.16s ease-in-out;
 
+      &.active {
+        background-color: var(--bg-secondary);
+      }
     }
 
     &:hover > div {

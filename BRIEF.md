@@ -6,7 +6,7 @@ Es una aplicación para listar y trackear el progreso de un libro, película o s
 - A través de una vista de kanban se pasa el contenido a cada categoría (not started, started, finished).
 - Se deben almacenar los contenidos agrupándolos según si es un libro, película o serie, en una página.
 - Al momento de guardar algun contenido, se debe tener los siguientes campos (no en este orden):
-  - Tipo de contenido (libro, película, serie)
+  - Tipo de contenido (libro, película/serie, juego)
   - Imagen
     - A pesar de poder ser agregada una personalizada por el usuario, debe tener un buscador (preferiblemente con google imágenes)
   - Nombre

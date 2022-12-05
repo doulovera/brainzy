@@ -12,6 +12,7 @@ export const AsideStyled = styled.aside`
   width: 100%;
   background-color: var(--bg-primary);
   border-top: 2px solid var(--bg-secondary);
+  z-index: 9999999;
 
   & > a {
     display: flex;

@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '@styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
@@ -8,7 +7,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Brainzy!</title>
       </Head>
-      <div className={styles.main}>
+      <div>
         <h1>Welcome to Brainzy!</h1>
 
         <p>
@@ -20,7 +19,7 @@ const Home: NextPage = () => {
           We will be releasing it soon, so stay tuned! 🤗
         </p>
 
-        <div className={styles.main__links}>
+        <div>
           <a href="https://github.com/doulovera/brainzy/" target="_blank" rel="noopener noreferrer">
             Github Repo!
           </a>

@@ -8,7 +8,7 @@ import { getManyTitles } from 'services/movies';
 import SearchMovie from '@components/Movies/SearchMovie';
 
 const TERMS = [
-  'The Batman', 'Paw Patrol: the movie', 'Avengers: Age of ultron', 'Fifty Shades of Grey', 'Teen Titans Go! to the Movies',
+  'The Batman', 'Paw Patrol: the movie', 'Avengers: Age of ultron', 'Teen Titans Go! to the Movies', 'Argentina, 1985',
 ];
 
 const Shows: NextPage<{ titles: string[] }> = (props) => {

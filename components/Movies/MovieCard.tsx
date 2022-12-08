@@ -82,7 +82,7 @@ export default function MovieCard ({ title, poster, year, type, imdbRating, rele
                 isNA(item)
                   ? null
                   : (
-                    <span key={index} className="py-1 px-2 bg-zinc-700 rounded-md capitalize text-xs">
+                    <span key={index} className="py-1 px-2 bg-pink-900 rounded-md capitalize text-xs">
                       {item}
                     </span>
                     )

@@ -28,10 +28,10 @@ export default function Modal ({ children, open, handleClose, title }: Props) {
   return (
     <div className="fixed inset-0 z-[9999999999] flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-zinc-800 min-w-[280px] w-5/6 max-w-[660px] min-h-[220px] p-4 rounded-xl">
-        <div className="flex justify-between border-b-2 border-zinc-500 pb-4 mb-4">
+        <div className="flex justify-between  pb-4 mb-4">
           <h3 className="text-xl font-bold">{title}</h3>
-          <button onClick={handleClose}>
-            <X size={28} />
+          <button className="hover:bg-zinc-600 rounded-lg" onClick={handleClose}>
+            <X size={26} />
           </button>
         </div>
         <div>

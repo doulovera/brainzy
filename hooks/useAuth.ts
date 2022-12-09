@@ -1,20 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { onAuthChanged } from '@services/auth';
 import { useUser } from '@store/user';
 
 export default function useAuth () {
   const store = useUser();
 
+  const [user, setUser] = useState<any | null>(null);
+
   useEffect(() => {
-    onAuthChanged((user) => {
-      if (user !== null && !store.isActive) {
-        store.setUser(user);
+    onAuthChanged((userInfo) => {
+      if (userInfo !== null && !store.isActive) {
+        store.setUser(userInfo);
       }
     });
   }, []);
 
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
+
   return {
-    user: store.user,
+    user,
     signIn: store.signIn,
     signOut: store.signOut,
   };

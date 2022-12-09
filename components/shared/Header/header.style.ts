@@ -6,7 +6,7 @@ export const HeaderStyled = styled.header`
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: var(--header-height);
   width: 100%;
   background-color: var(--bg-primary);
@@ -20,7 +20,7 @@ export const HeaderStyled = styled.header`
   }
   
   @media ${device.tablet} {
-    padding-left: calc(var(--header-height) / 2);
+    padding: 0 calc(var(--header-height) / 2) 0;
     justify-content: space-between;
   }
 `;

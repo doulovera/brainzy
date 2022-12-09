@@ -3,7 +3,11 @@ import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query
 import '@styles/globals.css';
 import 'normalize.css/normalize.css';
 
-function MyApp ({ Component, pageProps }: AppProps) {
+import useAuth from '@hooks/useAuth';
+
+function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
+  useAuth();
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {

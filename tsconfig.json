@@ -19,6 +19,8 @@
       "@components/*": ["./components/*"],
       "@icons/*": ["./components/icons/*"],
       "@hooks/*": ["./hooks/*"],
+      "@services/*": ["./services/*"],
+      "@store/*": ["./store/*"],
       "@styles/*": ["./styles/*"],
     }
   },

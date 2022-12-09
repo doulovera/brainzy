@@ -21,6 +21,6 @@ export const HeaderStyled = styled.header`
   
   @media ${device.tablet} {
     padding-left: calc(var(--header-height) / 2);
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 `;

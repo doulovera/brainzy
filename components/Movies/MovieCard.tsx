@@ -76,7 +76,7 @@ export default function MovieCard ({ title, poster, year, type, imdbRating, rele
               }
             </ul>
           </div>
-          <footer className="flex flex-row gap-1">
+          <footer className="flex flex-row gap-2">
             {
               footer.map((item, index) => (
                 isNA(item)

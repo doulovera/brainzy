@@ -9,6 +9,21 @@ const API = (params: Record<string, string>) => ({
   },
 });
 
+export async function getTitleById (
+  { id }: { id: string },
+) {
+  try {
+    const response = await get(
+      API({ i: id }),
+    );
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Something went wrong');
+  }
+}
+
 export async function searchTitle (
   { term, type }: { term: string, type: 'movie' | 'series' },
 ) {
@@ -29,21 +44,6 @@ export async function searchTitle (
       results: true,
       titles: response.Search,
     };
-  } catch (error) {
-    console.error(error);
-    throw new Error('Something went wrong');
-  }
-}
-
-export async function getTitleById (
-  { id }: { id: string },
-) {
-  try {
-    const response = await get(
-      API({ i: id }),
-    );
-
-    return response;
   } catch (error) {
     console.error(error);
     throw new Error('Something went wrong');

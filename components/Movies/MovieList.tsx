@@ -4,18 +4,15 @@ import MovieCard from './MovieCard';
 type Props = {
   isFetched: boolean;
   handleClick: () => void;
-  data: any;
+  list: any[];
 }
 
-export default function MovieList ({ isFetched, handleClick, data }: Props) {
+export default function MovieList ({ isFetched, handleClick, list }: Props) {
   if (isFetched) {
     return (
     <>
-      <div className="w-full h-[290px]">
-        <CardCreate title="Add new Movie or Show" onClick={handleClick} />
-      </div>
       {
-        data.movies?.map((movie, index) => {
+        list?.map((movie, index) => {
           const { Poster, Released, Title, Year, Type, Rated, imdbRating, Runtime } = movie || {};
 
           return (
@@ -34,6 +31,9 @@ export default function MovieList ({ isFetched, handleClick, data }: Props) {
           );
         })
       }
+      <div className="w-full h-[290px]">
+        <CardCreate title="Add new Movie or Show" onClick={handleClick} />
+      </div>
     </>
     );
   }

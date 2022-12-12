@@ -12,7 +12,7 @@ const Shows: NextPage<{ titles: string[] }> = (props) => {
   const { user } = useAuth();
   const { uid } = user || {}; // not show if user is not logged in
 
-  const { data, refetch, isFetched, isFetching, isError } = useQuery({
+  const { data, isFetched, isFetching, isError } = useQuery({
     queryKey: ['movies'],
     queryFn: () => getUserTitles({ userId: uid }),
     initialData: [],
@@ -21,12 +21,14 @@ const Shows: NextPage<{ titles: string[] }> = (props) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [addedMovies, setAddedMovies] = useState<any[] | null>(null);
+
   const handleClick = () => {
     setShowModal(true);
   };
 
-  const handleAddMovie = async () => {
-    await refetch(); // !! instead of refetching, just add the new movie to the list
+  const handleAddMovie = async ({ newTitle }: { newTitle: any }) => {
+    setAddedMovies((prev) => [...(prev || []), newTitle]);
     setShowModal(false);
   };
 
@@ -38,7 +40,7 @@ const Shows: NextPage<{ titles: string[] }> = (props) => {
         <MovieList
           isFetched={isFetched}
           handleClick={handleClick}
-          data={data}
+          list={[...(data.movies || []), ...(addedMovies || [])]}
         />
         {isError && <div>Something went wrong</div>}
       </div>

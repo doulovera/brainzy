@@ -3,7 +3,7 @@ import useAuth from '@hooks/useAuth';
 import Button from '@components/shared/button';
 import Input from '@components/shared/input';
 import Modal from '@components/shared/Modal';
-import { addTitle, searchTitle } from '@services/movies';
+import { addTitle, getTitleById, searchTitle } from '@services/movies';
 import MovieResultCard from './MovieResultCard';
 import Select from '@components/shared/select';
 import { MagnifyingGlass, SmileySad } from 'phosphor-react';
@@ -11,7 +11,7 @@ import { MagnifyingGlass, SmileySad } from 'phosphor-react';
 type Props = {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
-  onAddMovie: () => void;
+  onAddMovie: ({ newTitle }: { newTitle: string }) => void;
 }
 
 export default function SearchMovie ({ showModal, setShowModal, onAddMovie }: Props) {
@@ -24,6 +24,15 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie }: Pr
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [found, setFound] = useState<boolean | null>(null);
+
+  const handleAddMovie = async (titleId: string) => {
+    await addTitle({
+      titleId,
+      userId: uid as string,
+    });
+    const newTitle = await getTitleById({ id: titleId });
+    onAddMovie({ newTitle });
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -94,13 +103,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie }: Pr
                   title={result.Title}
                   year={result.Year}
                   imdbID={result.imdbID}
-                  onClick={async () => {
-                    await addTitle({
-                      titleId: result.imdbID as string,
-                      userId: uid as string,
-                    });
-                    onAddMovie();
-                  }}
+                  onClick={() => handleAddMovie(result.imdbID as string)}
                 />
               ))
             }

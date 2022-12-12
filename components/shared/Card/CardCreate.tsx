@@ -1,11 +1,11 @@
 import { Plus } from 'phosphor-react';
 
 type CardCreateProps = {
-  onClick: () => void;
   title: string;
+  onClick: () => void;
 }
 
-export default function CardCreate ({ onClick, title }: CardCreateProps) {
+export default function CardCreate ({ title, onClick }: CardCreateProps) {
   return (
     <button
       className="block w-full h-full bg-gray-700 rounded-lg hover:opacity-80 opacity-60 border-dashed border-2 border-gray-400"

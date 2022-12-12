@@ -3,28 +3,49 @@ import Image from 'next/image';
 import { CalendarBlank, StarHalf, UsersThree } from 'phosphor-react';
 
 type Props = {
-  title: string;
-  poster: string | undefined;
-  year: string;
-  type: string;
+  poster?: string;
   imdbRating?: string;
   released?: string;
   rated?: string;
   runtime?: string;
+  isLoading?: boolean;
+}
+
+type TruncateProps =
+| {
+  title: string;
+  year: string;
+  type: string;
+  isLoading?: false;
+}
+| {
+  isLoading: true;
+  title?: string;
+  year?: string;
+  type?: string;
 }
 
 const isNA = (value: string | undefined) => value === 'N/A';
 
-export default function MovieCard ({ title, poster, year, type, imdbRating, released, rated, runtime }: Props) {
+const TYPES = {
+  movie: '🎬 Movie',
+  series: '📺 Series',
+};
+
+export default function MovieCard ({ title = '...', poster, year, type, imdbRating, released, rated, runtime, isLoading }: Props & TruncateProps) {
   const cover = poster === 'N/A' ? undefined : poster;
 
-  const footer = [year, type, runtime];
+  const footer = [
+    TYPES[type as keyof typeof TYPES],
+    year,
+    runtime,
+  ];
 
   const info = [
     {
       icon: <StarHalf size={18} />,
       label: 'IMDb Rating',
-      value: `${imdbRating}/10`,
+      value: (isNA(imdbRating) || !imdbRating) ? imdbRating : `${imdbRating}/10`,
     },
     {
       icon: <CalendarBlank size={18} />,
@@ -39,9 +60,9 @@ export default function MovieCard ({ title, poster, year, type, imdbRating, rele
   ];
 
   return (
-    <div className="h-full">
+    <div className={`h-full ${isLoading ? 'pointer-events-none animate-pulse opacity-80' : ''}`}>
       <Card
-        href="/dashboard/shows"
+        href={isLoading ? '#' : '/dashboard/shows'}
         title={title}
         cover={cover}
         icon={
@@ -70,7 +91,7 @@ export default function MovieCard ({ title, poster, year, type, imdbRating, rele
                   <li key={index} className="flex gap-2">
                     {item.icon}
                     <span>{item.label}:</span>
-                    <strong>{item.value}</strong>
+                    <strong className={isLoading ? 'inline-block h-4 w-20 bg-gray-600 rounded-xl' : ''}>{item?.value}</strong>
                   </li>
                 ))
               }

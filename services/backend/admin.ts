@@ -1,5 +1,5 @@
 import admin from 'firebase-admin';
-import serviceAccount from '../serviceAccountKey.json';
+import serviceAccount from '../../serviceAccountKey.json';
 
 if (!admin.apps.length) {
   try {
@@ -10,4 +10,8 @@ if (!admin.apps.length) {
     console.log('Firebase admin initialization error', (error as Error).stack);
   }
 }
-export default admin.firestore();
+
+export const db = admin.firestore();
+export const auth = admin.auth();
+
+export default admin;

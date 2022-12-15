@@ -12,23 +12,26 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const signInAuth = () => auth.signInWithPopup(provider);
 export const signOutAuth = () => auth.signOut();
 
-const normalizeGoogleUser = (user: any) => {
+const normalizeGoogleUser = async (user: any) => {
   const { displayName, email, photoURL, uid } = user || {};
 
   if (!email) return null;
+
+  const jwt = await user.getIdToken();
 
   return {
     displayName,
     email,
     photoURL,
-    uid,
+    userId: uid,
+    jwt,
   };
 };
 
 // replace any with type
 export const onAuthChanged = (onChange: (user: any) => void) => {
-  return auth.onAuthStateChanged((user) => {
-    const normalizedUser = normalizeGoogleUser(user) || null;
+  return auth.onAuthStateChanged(async (user) => {
+    const normalizedUser = await normalizeGoogleUser(user) || null;
     onChange(normalizedUser);
   });
 };

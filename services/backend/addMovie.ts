@@ -1,4 +1,4 @@
-import db from '../db';
+import { db } from './admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
 export default async function addMovie (

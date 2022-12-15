@@ -10,13 +10,13 @@ import SkeletonMovieList from '@components/Movies/SkeletonMovieList';
 
 const Shows: NextPage<{ titles: string[] }> = (props) => {
   const { user } = useAuth();
-  const { uid } = user || {}; // not show if user is not logged in
+  const { userId } = user || {}; // not show if user is not logged in
 
   const { data, isFetched, isFetching, isError } = useQuery({
     queryKey: ['movies'],
-    queryFn: () => getUserTitles({ userId: uid }),
+    queryFn: () => getUserTitles({ userId }),
     initialData: [],
-    enabled: !!uid,
+    enabled: !!userId,
   });
 
   const [showModal, setShowModal] = useState(false);
@@ -34,11 +34,16 @@ const Shows: NextPage<{ titles: string[] }> = (props) => {
 
   return (
     <DashboardLayout title="Shows">
-      <SearchMovie showModal={showModal} setShowModal={setShowModal} onAddMovie={handleAddMovie} />
+      <SearchMovie
+        showModal={showModal}
+        setShowModal={setShowModal}
+        onAddMovie={handleAddMovie}
+        userId={userId}
+      />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(18rem,22rem))] justify-center gap-4 max-w-screen-xl m-auto p-2 pt-5">
         <SkeletonMovieList isFetched={isFetched} isFetching={isFetching} />
         <MovieList
-          isFetched={isFetched}
+          isFetched={isFetched && !isError}
           handleClick={handleClick}
           list={[...(data.movies || []), ...(addedMovies || [])]}
         />

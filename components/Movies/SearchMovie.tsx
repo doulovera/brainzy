@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '@hooks/useAuth';
 import Button from '@components/shared/button';
 import Input from '@components/shared/input';
 import Modal from '@components/shared/Modal';
@@ -12,12 +11,10 @@ type Props = {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
   onAddMovie: ({ newTitle }: { newTitle: string }) => void;
+  userId: string;
 }
 
-export default function SearchMovie ({ showModal, setShowModal, onAddMovie }: Props) {
-  const { user } = useAuth();
-  const { uid } = user || {}; // not show if user is not logged in
-
+export default function SearchMovie ({ showModal, setShowModal, onAddMovie, userId }: Props) {
   const [term, setTerm] = useState('');
   const [type, setType] = useState<'movie' | 'series'>('movie');
 
@@ -28,7 +25,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie }: Pr
   const handleAddMovie = async (titleId: string) => {
     await addTitle({
       titleId,
-      userId: uid as string,
+      userId,
     });
     const newTitle = await getTitleById({ id: titleId });
     onAddMovie({ newTitle });

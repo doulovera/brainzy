@@ -1,4 +1,4 @@
-import db from '../db';
+import { db } from './admin';
 
 export default async function getUserMovies (
   { userId }: { userId: string },

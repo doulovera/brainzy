@@ -1,21 +1,14 @@
-import { MOVIE_API } from 'constants/API_KEYS';
+import { API_URL } from 'constants/API_KEYS';
 import { get, post } from 'utils/fetch';
 
-const API = (params: Record<string, string>) => ({
-  url: 'http://www.omdbapi.com/',
-  params: {
-    apikey: MOVIE_API,
-    ...params,
-  },
-});
-
-export async function getTitleById (
+export async function getTitle (
   { id }: { id: string },
 ) {
   try {
-    const response = await get(
-      API({ i: id }),
-    );
+    const response = await get({
+      url: `${API_URL}/movies/title`,
+      params: { id },
+    });
 
     return response;
   } catch (error) {
@@ -29,35 +22,16 @@ export async function searchTitle (
 ) {
   const termToSearch = term.replace(' ', '+');
   try {
-    const response = await get(
-      API({ s: termToSearch, type }),
-    );
+    const response = await get({
+      url: `${API_URL}/movies/search`,
+      params: { term: termToSearch, type },
+    });
 
-    if (response.Response === 'False') {
-      return {
-        results: false,
-        titles: [],
-      };
-    }
-
-    return {
-      results: true,
-      titles: response.Search,
-    };
+    return response;
   } catch (error) {
     console.error(error);
     throw new Error('Something went wrong');
   }
-}
-
-export async function getManyTitles (
-  { ids }: { ids: string[] },
-) {
-  const titles = await Promise.all(
-    ids.map((id) => getTitleById({ id })),
-  );
-
-  return titles || [];
 }
 
 export async function getUserTitles (
@@ -77,7 +51,7 @@ export async function addTitle (
 ) {
   try {
     const response = await post({
-      url: '/api/movies/add',
+      url: `${API_URL}/movies/add`,
       body: {
         userId,
         titleId,

@@ -1,11 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import addMovie from '@services/backend/addMovie';
-import { getTitleById } from '@services/movies';
-
-// !!: ADD SUPPORT TO JWT FOR SECURITY
+import { getTitleById } from '@services/backend/movies-api';
+import { verifyToken } from '@services/backend/verifyToken';
 
 export default async function Add (req: NextApiRequest, res: NextApiResponse) {
   try {
+    const isValid = await verifyToken(req.cookies);
+    if (isValid.error) return res.status(401).json({ error: 'Unauthorized', message: isValid.message });
+
     const { titleId, userId } = JSON.parse(req.body);
 
     // check for the type of request

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@components/shared/button';
 import Input from '@components/shared/input';
 import Modal from '@components/shared/Modal';
-import { addTitle, getTitleById, searchTitle } from '@services/movies';
+import { addTitle, getTitle, searchTitle } from '@services/movies';
 import MovieResultCard from './MovieResultCard';
 import Select from '@components/shared/select';
 import { MagnifyingGlass, SmileySad } from 'phosphor-react';
@@ -21,15 +21,6 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [found, setFound] = useState<boolean | null>(null);
-
-  const handleAddMovie = async (titleId: string) => {
-    await addTitle({
-      titleId,
-      userId,
-    });
-    const newTitle = await getTitleById({ id: titleId });
-    onAddMovie({ newTitle });
-  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -52,6 +43,15 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
       setSearchResults([]);
     }
   }, [showModal]);
+
+  const handleAddMovie = async (titleId: string) => {
+    await addTitle({
+      titleId,
+      userId,
+    });
+    const newTitle = await getTitle({ id: titleId });
+    onAddMovie({ newTitle: newTitle.title });
+  };
 
   return (
     <Modal title="Add new Movie or Show" open={showModal} handleClose={() => setShowModal(false)}>

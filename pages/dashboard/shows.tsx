@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useState } from 'react';
 import DashboardLayout from '@components/DashboardLayout';
 import { useQuery } from '@tanstack/react-query';
-import { getUserTitles } from 'services/movies';
+import { getUserTitles } from '@services/movies';
 import SearchMovie from '@components/Movies/SearchMovie';
 import useAuth from '@hooks/useAuth';
 import MovieList from '@components/Movies/MovieList';

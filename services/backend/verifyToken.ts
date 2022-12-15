@@ -1,6 +1,8 @@
 import { auth } from '@services/backend/admin';
 
-export async function verifyToken (token?: string) {
+export async function verifyToken (cookies: { token?: string }) {
+  const { token } = cookies;
+
   const response = {
     error: false,
     message: '',

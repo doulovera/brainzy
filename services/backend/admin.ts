@@ -1,8 +1,11 @@
 import admin from 'firebase-admin';
-import serviceAccount from '../../serviceAccountKey.json';
 
 if (!admin.apps.length) {
   try {
+    if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) throw new Error('FIREBASE_SERVICE_ACCOUNT_KEY is not defined');
+
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
     });

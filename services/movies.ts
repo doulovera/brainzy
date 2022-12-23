@@ -29,12 +29,11 @@ export async function searchTitle (
 
     return response;
   } catch (error) {
-    console.error(error);
-    throw new Error('Something went wrong');
+    throw new Error((error as Error).message);
   }
 }
 
-export async function getUserTitles (
+export async function getUserTitles ( // !!
   { userId }: { userId: string },
 ) {
   try {

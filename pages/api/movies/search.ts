@@ -9,6 +9,8 @@ export default async function Search (req: NextApiRequest, res: NextApiResponse)
 
     const { term, type } = req.query;
 
+    console.log('TOCAMIENTO');
+
     if (!term || !type) return res.status(400).json({ error: 'Missing term or type' });
 
     if (type !== 'movie' && type !== 'series') return res.status(400).json({ error: 'Invalid type' });
@@ -19,7 +21,7 @@ export default async function Search (req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({ titles: response.titles });
     }
 
-    return res.status(400).json({ error: 'No results' });
+    return res.status(400).json({ error: 'No results found :(' });
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: 'Something went wrong' });

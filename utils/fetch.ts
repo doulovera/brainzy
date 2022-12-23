@@ -5,10 +5,15 @@ export const get = async (
     const urlParams = new URLSearchParams(params);
     const response = await fetch(`${url}?${urlParams}`);
 
-    return response.json();
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+    return data;
   } catch (error) {
     console.error(error);
-    throw new Error('Something went wrong: ');
+    throw new Error((error as Error).message);
   }
 };
 

@@ -5,7 +5,8 @@ import Modal from '@components/shared/Modal';
 import { addTitle, getTitle, searchTitle } from '@services/movies';
 import MovieResultCard from './MovieResultCard';
 import Select from '@components/shared/select';
-import { MagnifyingGlass, SmileySad } from 'phosphor-react';
+import { MagnifyingGlass } from 'phosphor-react';
+import { useQuery } from '@tanstack/react-query';
 
 type Props = {
   showModal: boolean;
@@ -18,29 +19,22 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
   const [term, setTerm] = useState('');
   const [type, setType] = useState<'movie' | 'series'>('movie');
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [found, setFound] = useState<boolean | null>(null);
+  const { data, isFetching: isLoading, isError, error, refetch } = useQuery({
+    queryKey: ['search'],
+    queryFn: () => searchTitle({ term, type }),
+    initialData: { titles: [] },
+    enabled: false,
+  });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const data = await searchTitle({ term, type });
-
-      setSearchResults(data.titles.slice(0, 5));
-      setFound(data.results);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
+    if (!term) return;
+    refetch();
   };
 
   useEffect(() => {
     if (!showModal) {
       setTerm('');
-      setSearchResults([]);
     }
   }, [showModal]);
 
@@ -78,22 +72,21 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
         <div>
           <p className="mb-4 text-gray-400">
             {
-              searchResults.length > 0 && `Showing ${searchResults.length} results`
+              (data.titles?.length > 0 && !isError) && `Showing ${data.titles?.length} results`
             }
           </p>
           {
-            found === false && (
+            isError && (
               <p className="flex flex-row items-center justify-center gap-3 text-gray-300 text-center">
                 <span>
-                  No results found
+                  {(error as Error)?.message}
                 </span>
-                <SmileySad size={28} />
               </p>
             )
           }
           <div className={`flex flex-col gap-1 max-h-[400px] overflow-y-auto ${isLoading ? 'opacity-30' : ''}`}>
             {
-              searchResults.length > 0 && searchResults.map((result) => (
+              (data.titles?.length > 0 && !isError) && data.titles.slice(0, 5).map((result: any) => (
                 <MovieResultCard
                   key={result.imdbID}
                   cover={result.Poster}

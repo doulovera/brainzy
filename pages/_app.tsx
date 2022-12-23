@@ -14,7 +14,6 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
     onTokenChanged((token) => {
       if (user) {
         setToken(token);
-        console.log({ token123: token });
       }
     });
   }, []);
@@ -23,6 +22,7 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
+        retry: false,
       },
     },
   });

@@ -42,3 +42,9 @@ export const onTokenChanged = (onChange: (user: any) => void) => {
     onChange(newToken);
   });
 };
+
+export const generateToken = async () => {
+  const user = auth.currentUser;
+  if (!user) return null;
+  return await user.getIdToken();
+};

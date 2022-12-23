@@ -5,10 +5,14 @@ import 'normalize.css/normalize.css';
 
 import useAuth from '@hooks/useAuth';
 import { useEffect } from 'react';
-import { onTokenChanged } from '@services/auth';
+import { generateToken, onTokenChanged } from '@services/auth';
 
 function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
   const { user, setToken } = useAuth();
+
+  useEffect(() => {
+    if (user) generateToken();
+  }, [user]);
 
   useEffect(() => {
     onTokenChanged((token) => {

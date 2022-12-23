@@ -4,9 +4,17 @@ import '@styles/globals.css';
 import 'normalize.css/normalize.css';
 
 import useAuth from '@hooks/useAuth';
+import { useEffect } from 'react';
 
 function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
-  useAuth();
+  const { user, setToken } = useAuth();
+
+  // automatically refresh token
+  useEffect(() => {
+    if (user) {
+      setToken();
+    }
+  }, [user]);
 
   const queryClient = new QueryClient({
     defaultOptions: {

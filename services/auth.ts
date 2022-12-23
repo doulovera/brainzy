@@ -35,3 +35,10 @@ export const onAuthChanged = (onChange: (user: any) => void) => {
     onChange(normalizedUser);
   });
 };
+
+export const onTokenChanged = (onChange: (user: any) => void) => {
+  return auth.onIdTokenChanged(async (user) => {
+    const newToken = await user?.getIdToken();
+    onChange(newToken);
+  });
+};

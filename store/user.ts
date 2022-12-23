@@ -1,6 +1,6 @@
-import { signInAuth, signOutAuth } from 'services/auth';
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
+import { signInAuth, signOutAuth } from 'services/auth';
 
 // @ts-ignore
 import cookieCutter from 'cookie-cutter';
@@ -11,7 +11,7 @@ type Store = {
   setUser: (user: any) => void;
   signIn: () => void;
   signOut: () => void;
-  setToken: () => void;
+  setToken: (token: string) => void;
 }
 
 export const useUser = create(persist<Store>(
@@ -36,9 +36,7 @@ export const useUser = create(persist<Store>(
         isActive: false,
       }));
     },
-    setToken: async () => {
-      const { user } = get();
-      const token = user.jwt;
+    setToken: async (token) => {
       cookieCutter.set('token', token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), path: '/', sameSite: 'lax' });
     },
   }),

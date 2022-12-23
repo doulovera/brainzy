@@ -5,16 +5,19 @@ import 'normalize.css/normalize.css';
 
 import useAuth from '@hooks/useAuth';
 import { useEffect } from 'react';
+import { onTokenChanged } from '@services/auth';
 
 function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
   const { user, setToken } = useAuth();
 
-  // automatically refresh token
   useEffect(() => {
-    if (user) {
-      setToken();
-    }
-  }, [user]);
+    onTokenChanged((token) => {
+      if (user) {
+        setToken(token);
+        console.log({ token123: token });
+      }
+    });
+  }, []);
 
   const queryClient = new QueryClient({
     defaultOptions: {

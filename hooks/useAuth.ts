@@ -11,7 +11,7 @@ export default function useAuth () {
     onAuthChanged((userInfo) => {
       if (userInfo !== null && !store.isActive) {
         store.setUser(userInfo);
-        store.setToken();
+        store.setToken(userInfo.jwt);
       }
     });
   }, []);

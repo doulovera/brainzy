@@ -11,7 +11,15 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
   const { user, setToken } = useAuth();
 
   useEffect(() => {
-    if (user) generateToken();
+    if (user) {
+      generateToken()
+        .then((token) => {
+          if (token) setToken(token);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
   }, [user]);
 
   useEffect(() => {

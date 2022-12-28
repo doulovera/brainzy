@@ -26,7 +26,11 @@ export const useUser = create(persist<Store>(
       }));
     },
     signIn: async () => {
-      await signInAuth();
+      try {
+        await signInAuth();
+      } catch (error) {
+        console.error(error);
+      }
     },
     signOut: async () => {
       await signOutAuth();
@@ -37,7 +41,8 @@ export const useUser = create(persist<Store>(
       }));
     },
     setToken: async (token) => {
-      cookieCutter.set('token', token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), path: '/', sameSite: 'lax' });
+      cookieCutter.set('token', '', { path: '/' });
+      cookieCutter.set('token', token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), path: '/', sameSite: 'lax', httpOnly: true });
     },
   }),
   {

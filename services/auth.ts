@@ -9,7 +9,7 @@ const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInAuth = () => auth.signInWithPopup(provider);
+export const signInAuth = async () => auth.signInWithPopup(provider);
 export const signOutAuth = () => auth.signOut();
 
 const normalizeGoogleUser = async (user: any) => {

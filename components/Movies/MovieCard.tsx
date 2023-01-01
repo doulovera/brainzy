@@ -9,6 +9,7 @@ type Props = {
   rated?: string;
   runtime?: string;
   isLoading?: boolean;
+  titleId?: string;
 }
 
 type TruncateProps =
@@ -32,7 +33,9 @@ const TYPES = {
   series: '📺 Series',
 };
 
-export default function MovieCard ({ title = '...', poster, year, type, imdbRating, released, rated, runtime, isLoading }: Props & TruncateProps) {
+export default function MovieCard ({
+  title = '...', poster, year, type, imdbRating, released, rated, runtime, isLoading, titleId,
+}: Props & TruncateProps) {
   const cover = poster === 'N/A' ? undefined : poster;
 
   const footer = [
@@ -59,10 +62,21 @@ export default function MovieCard ({ title = '...', poster, year, type, imdbRati
     },
   ];
 
+  const titleProps = {
+    title,
+    poster: cover || '',
+    year: year || '',
+    type: type || '',
+    imdbRating: imdbRating || '',
+    released: released || '',
+    rated: rated || '',
+    runtime: runtime || '',
+  };
+
   return (
     <div className={`h-full ${isLoading ? 'pointer-events-none animate-pulse opacity-80' : ''}`}>
       <Card
-        href={isLoading ? '#' : '/dashboard/shows'}
+        href={isLoading ? '#' : `/dashboard/shows/${titleId}?${new URLSearchParams(titleProps).toString()}`}
         title={title}
         cover={cover}
         icon={

@@ -13,7 +13,7 @@ export default function MovieList ({ isFetched, handleClick, list }: Props) {
     <>
       {
         list?.map((movie, index) => {
-          const { Poster, Released, Title, Year, Type, Rated, imdbRating, Runtime } = movie || {};
+          const { Poster, Released, Title, Year, Type, Rated, imdbRating, Runtime, imdbID } = movie || {};
 
           return (
             <div className="h-[290px]" key={index}>
@@ -26,6 +26,7 @@ export default function MovieList ({ isFetched, handleClick, list }: Props) {
                 released={Released}
                 rated={Rated}
                 runtime={Runtime}
+                titleId={imdbID}
               />
             </div>
           );

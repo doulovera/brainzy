@@ -20,7 +20,7 @@ export default function Select ({ name, label, options, value, onChange }: Props
       }
       <select
         id={name}
-        className="h-14 w-full px-3 py-2 text-gray-200 bg-primary-50 border-2 border-zinc-500 rounded-xl cursor-pointer"
+        className="h-14 w-full px-3 py-2 text-gray-200 bg-primary-50 border-2 border-zinc-500 rounded-xl cursor-pointer capitalize"
         onChange={onChange}
         value={value}
       >

@@ -13,7 +13,7 @@ export default function Item ({ children, href }: Props) {
   return (
     <Link href={href}>
       <a>
-        <div className={router.pathname === href ? 'active' : ''}>
+        <div className={router.pathname.startsWith(href) ? 'active' : ''}>
           {children}
         </div>
       </a>

@@ -1,7 +1,7 @@
-import { db } from './admin';
+import { db } from '../admin';
 import { FieldValue } from 'firebase-admin/firestore';
 
-export default async function addMovie (
+export default async function removeMovie (
   { id, userId }: { id: string, userId: string },
 ) {
   return db

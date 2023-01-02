@@ -3,13 +3,19 @@ import DashboardLayout from '@components/DashboardLayout';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { InfoCard } from '@components/shared/info-card';
-import { CalendarBlank, FilmSlate, HourglassHigh, Star, UsersThree } from 'phosphor-react';
+import { CalendarBlank, FilmSlate, HourglassHigh, Star, Trash, UsersThree } from 'phosphor-react';
 import Button from '@components/shared/button';
+import { editTitle } from '@services/movies';
+import React from 'react';
+import useAuth from '@hooks/useAuth';
 
 const Title: NextPage = () => {
-  // get the queries from the url
+  const { user } = useAuth();
+  const { userId } = user || {}; // not show if user is not logged in
+
   const router = useRouter();
   const {
+    id: titleId,
     title,
     poster,
     year,
@@ -50,11 +56,23 @@ const Title: NextPage = () => {
     },
   ];
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const comment = (event.target as HTMLFormElement).comment.value;
+
+    await editTitle({
+      titleId: titleId as string,
+      comment,
+      userId,
+    });
+  };
+
   return (
     <DashboardLayout title="Title">
-      <div className="max-w-screen-lg m-auto p-2 pt-5">
+      <form onSubmit={handleSubmit} className="max-w-screen-lg m-auto p-2 pt-5">
         <article className="bg-zinc-800 rounded-lg overflow-hidden">
-          <div className="relative w-full h-60 sm:h-80 opacity-70">
+          <div className="relative w-full h-60 sm:h-80 opacity-60">
             <Image
               src={(poster as string) || '/web3.jpg'}
               layout="fill"
@@ -66,18 +84,18 @@ const Title: NextPage = () => {
           </div>
           <div className="px-3 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 sm:gap-0"> {/* maybe hide options in three dots when mobile */}
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-5xl font-bold">
                 {title} ({year})
               </h2>
-              <div className="flex w-full sm:w-2/5 gap-4">
+              <div className="flex w-full sm:w-2/5 gap-3">
                 <div className="flex-1">
-                  <Button>
-                    Sync to Notion
+                  <Button disabled>
+                    Save to Notion
                   </Button>
                 </div>
-                <div>
+                <div className="aspect-square w-14">
                   <Button outlined>
-                    Remove
+                    <Trash size={24} />
                   </Button>
                 </div>
               </div>
@@ -90,14 +108,28 @@ const Title: NextPage = () => {
                     icon={property.icon}
                     title={property.label}
                     value={property.value}
-                    color="bg-pink-600"
+                    color="bg-pink-500"
                   />
                 ))
               }
             </div>
+            <div className="mt-6">
+              <label htmlFor="comment" className="block mb-2 text-md font-medium text-white">Your comments about the Movie/Show</label>
+              <textarea
+                id="comment"
+                rows={10}
+                className="block p-2.5 w-full text-sm rounded-lg border bg-zinc-900 border-gray-600 placeholder-gray-400 text-white focus:outline-none"
+                placeholder="Write your thoughts here..."
+              ></textarea>
+            </div>
+            <div className="mt-4">
+              <Button type="submit">
+                Save
+              </Button>
+            </div>
           </div>
         </article>
-      </div>
+      </form>
     </DashboardLayout>
   );
 };

@@ -44,7 +44,7 @@ export async function getUserTitles (
 }
 
 export async function addTitle (
-  { userId, titleId }: { userId: string, titleId: string },
+  { userId, comment = '', titleId }: { userId: string, comment?: string, titleId: string },
 ) {
   try {
     return post({
@@ -52,6 +52,25 @@ export async function addTitle (
       body: {
         userId,
         titleId,
+        comment,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    throw new Error('Something went wrong');
+  }
+}
+
+export async function editTitle (
+  { userId, comment = '', titleId }: { userId: string, comment?: string, titleId: string },
+) {
+  try {
+    return post({
+      url: `${API_URL}/movies/edit`,
+      body: {
+        userId,
+        titleId,
+        comment,
       },
     });
   } catch (error) {

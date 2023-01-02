@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import addMovie from '@services/backend/db/addMovie';
 import { getTitleById } from '@services/backend/movies-api';
 import { verifyToken } from '@services/backend/verifyToken';
+import editTitle from '@services/backend/db/editTitle';
 
 export default async function Add (req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -10,13 +10,16 @@ export default async function Add (req: NextApiRequest, res: NextApiResponse) {
 
     const { titleId, comment, userId } = JSON.parse(req.body);
 
+    if (!userId) return res.status(400).json({ error: 'Missing userId' });
+
     // check for the type of request
     if (req.method === 'POST') {
       if (!titleId) {
         res.status(400).json({ error: 'Missing titleId' });
       } else {
         const { imdbID } = await getTitleById({ id: titleId });
-        await addMovie({ id: imdbID, comment, userId });
+        console.log('imdbID', imdbID);
+        await editTitle({ id: imdbID, comment, userId });
         res.status(200).json({ ok: 'ok' });
       }
     }

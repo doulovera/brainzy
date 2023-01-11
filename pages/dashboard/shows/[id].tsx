@@ -71,8 +71,8 @@ const Title: NextPage = () => {
   return (
     <DashboardLayout title="Title">
       <form onSubmit={handleSubmit} className="max-w-screen-lg m-auto p-2 pt-5">
-        <article className="bg-zinc-800 rounded-lg overflow-hidden">
-          <div className="relative w-full h-60 sm:h-80 opacity-60">
+        <article className="relative bg-zinc-800 rounded-lg overflow-hidden">
+          <div className="relative w-full h-60 sm:h-80 opacity-40">
             <Image
               src={(poster as string) || '/web3.jpg'}
               layout="fill"
@@ -82,6 +82,17 @@ const Title: NextPage = () => {
               className=""
             />
           </div>
+          <div className="absolute top-8 left-3 shadow-lg">
+              <Image
+                src={(poster as string) || '/web3.jpg'}
+                width={170}
+                height={250}
+                objectFit="cover"
+                objectPosition="center"
+                alt="Movie or Show Poster"
+                className="rounded-lg"
+              />
+            </div>
           <div className="px-3 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 sm:gap-0"> {/* maybe hide options in three dots when mobile */}
               <h2 className="text-5xl font-bold">

@@ -16,7 +16,7 @@ export function InfoCard ({ icon: Icon, title, value, color }: Props) {
       </div>
       <div>
         <p className="text-sm font-medium text-gray-400">{title}</p>
-        <h3 className="text-lg font-semibold text-white">{value}</h3>
+        <h3 className="text-lg font-semibold text-white capitalize">{value}</h3>
       </div>
     </article>
   );

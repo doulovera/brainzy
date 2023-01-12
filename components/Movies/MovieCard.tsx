@@ -62,21 +62,10 @@ export default function MovieCard ({
     },
   ];
 
-  const titleProps = {
-    title,
-    poster: cover || '',
-    year: year || '',
-    type: type || '',
-    imdbRating: imdbRating || '',
-    released: released || '',
-    rated: rated || '',
-    runtime: runtime || '',
-  };
-
   return (
     <div className={`h-full ${isLoading ? 'pointer-events-none animate-pulse opacity-80' : ''}`}>
       <Card
-        href={isLoading ? '#' : `/dashboard/shows/${titleId}?${new URLSearchParams(titleProps).toString()}`}
+        href={isLoading ? '#' : `/dashboard/shows/${titleId}`}
         title={title}
         cover={cover}
         icon={

@@ -5,26 +5,39 @@ import Image from 'next/image';
 import { InfoCard } from '@components/shared/info-card';
 import { CalendarBlank, FilmSlate, HourglassHigh, Star, Trash, UsersThree } from 'phosphor-react';
 import Button from '@components/shared/button';
-import { editTitle } from '@services/movies';
+import { editTitle, getTitle } from '@services/movies';
 import React from 'react';
 import useAuth from '@hooks/useAuth';
+import { useQuery } from '@tanstack/react-query';
 
 const Title: NextPage = () => {
   const { user } = useAuth();
   const { userId } = user || {}; // not show if user is not logged in
 
   const router = useRouter();
+  const { id: titleId } = router.query;
+
+  const { data, isFetched, isFetching, isError } = useQuery({
+    queryKey: ['movie_title'],
+    queryFn: () => getTitle({ id: titleId as string }),
+    initialData: [],
+    enabled: !!titleId,
+  });
+
+  if (!data.title) return <></>;
+
   const {
-    id: titleId,
-    title,
-    poster,
-    year,
-    type,
-    imdbRating,
-    released,
-    rated,
-    runtime,
-  } = router.query;
+    title: {
+      Title: title,
+      Poster: poster,
+      Year: year,
+      Type: type,
+      imdbRating,
+      Released: released,
+      Rated: rated,
+      Runtime: runtime,
+    },
+  } = data;
 
   const isNA = (value: string | string[] | undefined) => value === 'N/A';
 

@@ -1,5 +1,6 @@
 import { MOVIE_API } from 'constants/API_KEYS'
 import { get } from 'utils/fetch'
+import getTitleInDb from './db/getTitle'
 
 const URL = 'http://www.omdbapi.com/'
 
@@ -61,4 +62,10 @@ export async function getManyTitles (
   )
 
   return titles || []
+}
+
+export async function getTitleComments (
+  { userId, titleId }: { userId: string; titleId: string },
+) {
+  return getTitleInDb({ userId, titleId })
 }

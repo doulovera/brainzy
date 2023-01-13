@@ -7,7 +7,7 @@ export async function getTitle (
   try {
     return get({
       url: `${API_URL}/movies/title`,
-      params: { id },
+      params: { id, comments: 'true' },
     })
   } catch (error) {
     console.error(error)

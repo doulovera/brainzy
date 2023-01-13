@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import getUserMovies from '@services/backend/getUserMovies'
+import getUserMovies from '@services/backend/db/getUserMovies'
 import { getManyTitles } from '@services/backend/movies-api'
 import { verifyToken } from '@services/backend/verifyToken'
 
@@ -12,14 +12,12 @@ export default async function Add (req: NextApiRequest, res: NextApiResponse) {
 
     if (!user) return res.status(400).json({ error: 'Missing user' })
 
-    const moviesIDs = await getUserMovies({ userId: user as string })
-
-    const moviesIdsList = moviesIDs?.movies && moviesIDs.movies?.map((movie: any) => movie.id)
+    const moviesIdsList = await getUserMovies({ userId: user as string })
     const movies = await getManyTitles({ ids: moviesIdsList || [] })
 
     res.status(200).json({ movies })
   } catch (error) {
-    console.log(error)
+    console.error(error)
     res.status(400).json({ error: 'Something went wrong' })
   }
 }

@@ -8,7 +8,6 @@ type Props = {
 }
 
 export default function MovieList ({ isFetched, handleClick, list }: Props) {
-  console.log({ list })
   if (isFetched) {
     return (
     <>

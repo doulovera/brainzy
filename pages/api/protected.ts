@@ -8,7 +8,7 @@ export default async function Protected (req: NextApiRequest, res: NextApiRespon
 
     return res.status(200).json({ ok: 'ok' })
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return res.status(400).json({ error: 'Something went wrong' })
   }
 };

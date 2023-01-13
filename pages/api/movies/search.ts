@@ -21,7 +21,7 @@ export default async function Search (req: NextApiRequest, res: NextApiResponse)
 
     return res.status(400).json({ error: 'No results found :(' })
   } catch (error) {
-    console.log(error)
+    console.error(error)
     res.status(400).json({ error: 'Something went wrong' })
   }
 };

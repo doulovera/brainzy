@@ -8,6 +8,7 @@ import Button from '@components/shared/button'
 
 type Props = {
   handleSubmit: (props: any) => void
+  handleDelete: () => void
   poster: string
   title: string
   year: string
@@ -21,6 +22,7 @@ type Props = {
 
 export default function TitlePage ({
   handleSubmit,
+  handleDelete,
   poster,
   title,
   year,
@@ -64,7 +66,7 @@ export default function TitlePage ({
       <article className="relative bg-zinc-800 rounded-lg overflow-hidden">
         <PageHeader poster={poster} />
         <div className="px-3 py-4">
-          <PageTitle title={title} year={year} />
+          <PageTitle title={title} year={year} handleDelete={handleDelete} />
           <PageInfo properties={properties} />
           <Comments comments={comments} />
           <div className="mt-4">

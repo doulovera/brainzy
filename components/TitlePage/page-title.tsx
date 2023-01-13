@@ -2,11 +2,12 @@ import { Trash } from 'phosphor-react'
 import Button from '@components/shared/button'
 
 type Props = {
+  handleDelete: () => void
   title: string
   year: string
 }
 
-export default function PageTitle ({ title, year }: Props) {
+export default function PageTitle ({ handleDelete, title, year }: Props) {
   return (
     <section className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 sm:gap-0"> {/* maybe hide options in three dots when mobile */}
       <h2 className="text-5xl font-bold">
@@ -19,7 +20,7 @@ export default function PageTitle ({ title, year }: Props) {
           </Button>
         </div>
         <div className="aspect-square w-14">
-          <Button outlined>
+          <Button outlined onClick={handleDelete}>
             <Trash size={24} />
           </Button>
         </div>

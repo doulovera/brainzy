@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import DashboardLayout from '@components/DashboardLayout'
 import TitlePage from '@components/TitlePage'
 import useAuth from '@hooks/useAuth'
-import { editTitle, getTitle } from '@services/movies'
+import { deleteTitle, editTitle, getTitle } from '@services/movies'
 
 const Title: NextPage = () => {
   const { user } = useAuth()
@@ -60,12 +60,18 @@ const Title: NextPage = () => {
     })
   }
 
+  const handleDelete = async () => {
+    await deleteTitle({ titleId: titleId as string })
+    router.push('/dashboard/shows')
+  }
+
   return (
     <DashboardLayout title="Title">
       {
         isFetched && (
           <TitlePage
             handleSubmit={handleSubmit}
+            handleDelete={handleDelete}
             comments={comments}
             {...titlePageValues}
           />

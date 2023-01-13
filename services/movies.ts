@@ -78,3 +78,19 @@ export async function editTitle (
     throw new Error('Something went wrong')
   }
 }
+
+export async function deleteTitle (
+  { titleId }: { titleId: string },
+) {
+  try {
+    return post({
+      url: `${API_URL}/movies/delete`,
+      body: {
+        titleId,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+    throw new Error('Something went wrong')
+  }
+}

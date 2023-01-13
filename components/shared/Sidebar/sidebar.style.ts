@@ -19,7 +19,7 @@ export const AsideStyled = styled.aside`
     align-items: center;
     text-align: center;
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
 
     & > div {
       display: flex;
@@ -51,5 +51,10 @@ export const AsideStyled = styled.aside`
     width: var(--header-height);
     border: 0;
 
+    & > a {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
   }
 `

@@ -1,14 +1,14 @@
-import type { NextPage } from 'next';
-import DashboardLayout from '@components/DashboardLayout';
-import Button from '@components/shared/button';
-import useAuth from '@hooks/useAuth';
-import { GoogleLogo, SignOut } from 'phosphor-react';
+import type { NextPage } from 'next'
+import DashboardLayout from '@components/DashboardLayout'
+import Button from '@components/shared/button'
+import useAuth from '@hooks/useAuth'
+import { GoogleLogo, SignOut } from 'phosphor-react'
 
 const User: NextPage = () => {
-  const { user, signOut, signIn } = useAuth();
+  const { user, signOut, signIn } = useAuth()
 
-  const handleSignIn = () => signIn();
-  const handleSignOut = () => signOut();
+  const handleSignIn = () => signIn()
+  const handleSignOut = () => signOut()
 
   return (
     <DashboardLayout title="Profile">
@@ -34,7 +34,7 @@ const User: NextPage = () => {
         </div>
       </div>
     </DashboardLayout>
-  );
-};
+  )
+}
 
-export default User;
+export default User

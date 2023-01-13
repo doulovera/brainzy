@@ -1,5 +1,5 @@
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
-import { IconProps } from 'phosphor-react';
+import React, { ForwardRefExoticComponent, RefAttributes } from 'react'
+import { IconProps } from 'phosphor-react'
 
 type Props = {
   icon: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>;
@@ -19,5 +19,5 @@ export function InfoCard ({ icon: Icon, title, value, color }: Props) {
         <h3 className="text-lg font-semibold text-white capitalize">{value}</h3>
       </div>
     </article>
-  );
+  )
 }

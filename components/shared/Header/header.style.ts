@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '@styles/breakpoints';
+import styled from 'styled-components'
+import { device } from '@styles/breakpoints'
 
 export const HeaderStyled = styled.header`
   position: fixed;
@@ -23,4 +23,4 @@ export const HeaderStyled = styled.header`
     padding: 0 calc(var(--header-height) / 2) 0;
     justify-content: space-between;
   }
-`;
+`

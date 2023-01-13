@@ -1,6 +1,6 @@
-import { ForwardRefExoticComponent, RefAttributes } from 'react';
-import { IconProps } from 'phosphor-react';
-import { InfoCard } from '@components/shared/info-card';
+import { ForwardRefExoticComponent, RefAttributes } from 'react'
+import { IconProps } from 'phosphor-react'
+import { InfoCard } from '@components/shared/info-card'
 
 type Props = {
   properties: {
@@ -25,5 +25,5 @@ export default function PageInfo ({ properties }: Props) {
         ))
       }
     </section>
-  );
+  )
 }

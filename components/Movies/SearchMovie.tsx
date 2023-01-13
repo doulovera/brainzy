@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@components/shared/button';
-import Input from '@components/shared/input';
-import Modal from '@components/shared/Modal';
-import { addTitle, getTitle, searchTitle } from '@services/movies';
-import MovieResultCard from './MovieResultCard';
-import Select from '@components/shared/select';
-import { MagnifyingGlass } from 'phosphor-react';
-import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react'
+import Button from '@components/shared/button'
+import Input from '@components/shared/input'
+import Modal from '@components/shared/Modal'
+import { addTitle, getTitle, searchTitle } from '@services/movies'
+import MovieResultCard from './MovieResultCard'
+import Select from '@components/shared/select'
+import { MagnifyingGlass } from 'phosphor-react'
+import { useQuery } from '@tanstack/react-query'
 
 type Props = {
   showModal: boolean;
@@ -16,36 +16,36 @@ type Props = {
 }
 
 export default function SearchMovie ({ showModal, setShowModal, onAddMovie, userId }: Props) {
-  const [term, setTerm] = useState('');
-  const [type, setType] = useState<'movie' | 'series'>('movie');
+  const [term, setTerm] = useState('')
+  const [type, setType] = useState<'movie' | 'series'>('movie')
 
   const { data, isFetching: isLoading, isError, error, refetch } = useQuery({
     queryKey: ['search'],
     queryFn: () => searchTitle({ term, type }),
     initialData: { titles: [] },
     enabled: false,
-  });
+  })
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!term) return;
-    refetch();
-  };
+    event.preventDefault()
+    if (!term) return
+    refetch()
+  }
 
   useEffect(() => {
     if (!showModal) {
-      setTerm('');
+      setTerm('')
     }
-  }, [showModal]);
+  }, [showModal])
 
   const handleAddMovie = async (titleId: string) => {
     await addTitle({
       titleId,
       userId,
-    });
-    const newTitle = await getTitle({ id: titleId });
-    onAddMovie({ newTitle: newTitle.title });
-  };
+    })
+    const newTitle = await getTitle({ id: titleId })
+    onAddMovie({ newTitle: newTitle.title })
+  }
 
   return (
     <Modal title="Add new Movie or Show" open={showModal} handleClose={() => setShowModal(false)}>
@@ -107,5 +107,5 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
         </Button>
       </form>
     </Modal>
-  );
+  )
 }

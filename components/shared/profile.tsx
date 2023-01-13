@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router';
-import Image from 'next/image';
-import useAuth from '@hooks/useAuth';
-import Button from '@components/shared/button';
-import Link from 'next/link';
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import useAuth from '@hooks/useAuth'
+import Button from '@components/shared/button'
+import Link from 'next/link'
 
 export default function Profile () {
-  const router = useRouter();
-  const { user } = useAuth();
+  const router = useRouter()
+  const { user } = useAuth()
 
   if (!user || !user?.displayName) {
     return (
@@ -17,7 +17,7 @@ export default function Profile () {
         Login
       </Button>
     </div>
-    );
+    )
   };
 
   return (
@@ -32,5 +32,5 @@ export default function Profile () {
         />
       </a>
     </Link>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import Loader from './loader';
+import React from 'react'
+import Loader from './loader'
 
 type Props = {
   children?: React.ReactNode;
@@ -28,5 +28,5 @@ export default function Button (
         }
       </button>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 type Props = {
   label?: string;
@@ -37,5 +37,5 @@ export default function Input (
         onChange={onChange}
       />
     </div>
-  );
+  )
 }

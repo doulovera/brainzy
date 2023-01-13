@@ -1,4 +1,4 @@
-import MovieCard from './MovieCard';
+import MovieCard from './MovieCard'
 
 type Props = {
   isFetching: boolean;
@@ -17,8 +17,8 @@ export default function SkeletonMovieList ({ isFetching, isFetched }: Props) {
           ))
         }
       </>
-    );
+    )
   };
 
-  return null;
+  return null
 }

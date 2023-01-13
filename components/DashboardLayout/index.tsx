@@ -1,16 +1,16 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
 // store
-import { useStore } from 'store/theme';
+import { useStore } from 'store/theme'
 // global styles
-import { GlobalStyles } from '@styles/globals';
-import { darkMode, lightMode } from '@styles/colors';
+import { GlobalStyles } from '@styles/globals'
+import { darkMode, lightMode } from '@styles/colors'
 // styles
-import { ContentStyled, WrapperStyled } from './layout.style';
+import { ContentStyled, WrapperStyled } from './layout.style'
 // components
-import Header from '@components/shared/Header';
-import Sidebar from '@components/shared/Sidebar';
-import Head from 'next/head';
+import Header from '@components/shared/Header'
+import Sidebar from '@components/shared/Sidebar'
+import Head from 'next/head'
 
 type Props = {
   children: React.ReactNode,
@@ -18,7 +18,7 @@ type Props = {
 }
 
 export default function DashboardLayout ({ children, title = 'Dashboard' }: Props) {
-  const { theme } = useStore();
+  const { theme } = useStore()
 
   return (
     <>
@@ -38,5 +38,5 @@ export default function DashboardLayout ({ children, title = 'Dashboard' }: Prop
         </WrapperStyled>
       </ThemeProvider>
     </>
-  );
+  )
 }

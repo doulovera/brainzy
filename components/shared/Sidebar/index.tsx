@@ -1,14 +1,14 @@
-import { AsideStyled } from './sidebar.style';
-import Item from '@components/shared/Sidebar/Item';
+import { AsideStyled } from './sidebar.style'
+import Item from '@components/shared/Sidebar/Item'
 import {
   // BookOpen,
   // GameController,
   House,
   TelevisionSimple,
   User,
-} from 'phosphor-react';
+} from 'phosphor-react'
 
-const DASHBOARD_ROUTE = '/dashboard';
+const DASHBOARD_ROUTE = '/dashboard'
 
 const Items = [
   {
@@ -31,7 +31,7 @@ const Items = [
     href: '/profile',
     icon: User,
   },
-];
+]
 
 export default function Sidebar () {
   return (
@@ -42,5 +42,5 @@ export default function Sidebar () {
         </Item>
       ))}
     </AsideStyled>
-  );
+  )
 }

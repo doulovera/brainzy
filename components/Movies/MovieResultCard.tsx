@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 type Props = {
   cover: string;
@@ -42,5 +42,5 @@ export default function MovieResultCard (
         </span>
       </div>
     </button>
-  );
+  )
 }

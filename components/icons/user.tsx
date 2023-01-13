@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import { SVGProps } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -17,6 +17,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <circle cx={12} cy={7} r={4} />
     <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
   </svg>
-);
+)
 
-export default SvgComponent;
+export default SvgComponent

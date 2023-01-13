@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { SVGProps } from 'react';
+import * as React from 'react'
+import { SVGProps } from 'react'
 
 const Burger = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -17,6 +17,6 @@ const Burger = (props: SVGProps<SVGSVGElement>) => (
     <path d="M0 0h24v24H0z" stroke="none" />
     <path d="M4 6h16M4 12h16M4 18h16" />
   </svg>
-);
+)
 
-export default Burger;
+export default Burger

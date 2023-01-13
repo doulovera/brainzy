@@ -1,5 +1,5 @@
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
+import create from 'zustand'
+import { persist } from 'zustand/middleware'
 
 export const useStore = create(persist(
   (set: any) => ({
@@ -10,4 +10,4 @@ export const useStore = create(persist(
     name: 'theme',
     getStorage: () => localStorage,
   },
-));
+))

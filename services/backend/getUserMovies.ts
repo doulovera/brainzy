@@ -1,4 +1,4 @@
-import { db } from './admin';
+import { db } from './admin'
 
 export default async function getUserMovies (
   { userId }: { userId: string },
@@ -9,10 +9,10 @@ export default async function getUserMovies (
     .get()
     .then((doc) => {
       if (doc.exists) {
-        return doc.data();
+        return doc.data()
       }
     })
     .catch((error) => {
-      console.error('Error getting document: ', error);
-    });
+      console.error('Error getting document: ', error)
+    })
 }

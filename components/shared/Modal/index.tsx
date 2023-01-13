@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { X } from 'phosphor-react';
+import React, { useEffect } from 'react'
+import { X } from 'phosphor-react'
 
 type Props = {
   children: React.ReactNode;
@@ -12,18 +12,18 @@ export default function Modal ({ children, open, handleClose, title }: Props) {
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        event.preventDefault();
-        handleClose();
+        event.preventDefault()
+        handleClose()
       }
-    };
+    }
 
-    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keydown', keyDownHandler)
     return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  }, []);
+      document.removeEventListener('keydown', keyDownHandler)
+    }
+  }, [])
 
-  if (!open) return null;
+  if (!open) return null
 
   return (
     <div className="fixed inset-0 z-[9999999999] flex items-center justify-center bg-black bg-opacity-50">
@@ -39,5 +39,5 @@ export default function Modal ({ children, open, handleClose, title }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

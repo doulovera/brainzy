@@ -1,5 +1,5 @@
-import { db } from '../admin';
-import { FieldValue } from 'firebase-admin/firestore';
+import { db } from '../admin'
+import { FieldValue } from 'firebase-admin/firestore'
 
 export default async function editTitle (
   { id, comment, userId }: { id: string, comment?: string, userId: string },
@@ -7,9 +7,9 @@ export default async function editTitle (
   const movieItem = {
     id,
     comment,
-  };
+  }
 
-  const movieRef = db.collection('movies').doc(userId);
+  const movieRef = db.collection('movies').doc(userId)
 
   // first, remove the existing record
   await movieRef
@@ -17,11 +17,11 @@ export default async function editTitle (
       movies: FieldValue.arrayRemove(movieItem),
     })
     .then(() => {
-      console.log('Document written');
+      console.log('Document written')
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+      console.error('Error adding document: ', error)
+    })
 
   // add the record as new
   await movieRef
@@ -29,11 +29,11 @@ export default async function editTitle (
       movies: FieldValue.arrayUnion(movieItem),
     })
     .then(() => {
-      console.log('Document written');
+      console.log('Document written')
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+      console.error('Error adding document: ', error)
+    })
 
-  return movieRef.get();
+  return movieRef.get()
 }

@@ -1,10 +1,10 @@
-import { CalendarBlank, FilmSlate, HourglassHigh, Star, UsersThree } from 'phosphor-react';
-import PageHeader from './page-header';
-import PageTitle from './page-title';
-import PageInfo from './page-info';
-import Comments from './comments';
-import { isNA } from 'utils/is-na';
-import Button from '@components/shared/button';
+import { CalendarBlank, FilmSlate, HourglassHigh, Star, UsersThree } from 'phosphor-react'
+import PageHeader from './page-header'
+import PageTitle from './page-title'
+import PageInfo from './page-info'
+import Comments from './comments'
+import { isNA } from 'utils/is-na'
+import Button from '@components/shared/button'
 
 type Props = {
   handleSubmit: (props: any) => void
@@ -55,7 +55,7 @@ export default function TitlePage ({
       label: 'Type',
       value: type,
     },
-  ];
+  ]
 
   return (
     <form onSubmit={handleSubmit} className="max-w-screen-lg m-auto p-2 pt-5">
@@ -73,5 +73,5 @@ export default function TitlePage ({
         </div>
       </article>
     </form>
-  );
+  )
 }

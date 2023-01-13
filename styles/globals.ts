@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 type ThemeType = {
   bgPrimary: string;
@@ -43,4 +43,4 @@ export const GlobalStyles = createGlobalStyle<{theme: ThemeType}>`
   .icon.icon-tabler {
     font-size: 1.4rem;
   }
-`;
+`

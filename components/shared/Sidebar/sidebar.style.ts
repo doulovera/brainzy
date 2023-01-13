@@ -1,5 +1,5 @@
-import { device } from '@styles/breakpoints';
-import styled from 'styled-components';
+import { device } from '@styles/breakpoints'
+import styled from 'styled-components'
 
 export const AsideStyled = styled.aside`
   position: fixed;
@@ -52,4 +52,4 @@ export const AsideStyled = styled.aside`
     border: 0;
 
   }
-`;
+`

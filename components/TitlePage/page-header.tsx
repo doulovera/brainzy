@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 type Props = {
   poster: string
@@ -37,5 +37,5 @@ export default function PageHeader ({ poster }: Props) {
         )
       }
     </header>
-  );
+  )
 }

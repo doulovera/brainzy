@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '@styles/breakpoints';
+import styled from 'styled-components'
+import { device } from '@styles/breakpoints'
 
 export const WrapperStyled = styled.div`
   height: 100%;
@@ -7,7 +7,7 @@ export const WrapperStyled = styled.div`
   width: 100%;
   color: var(--font-primary);
   background-color: var(--bg-primary);
-`;
+`
 
 export const ContentStyled = styled.div`
   position: relative;
@@ -21,4 +21,4 @@ export const ContentStyled = styled.div`
       margin-left: var(--header-height);
     }
   }
-`;
+`

@@ -9,5 +9,5 @@ export default function Comments () {
         placeholder="Write your thoughts here..."
       ></textarea>
     </section>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { db } from '../admin';
-import { FieldValue } from 'firebase-admin/firestore';
+import { db } from '../admin'
+import { FieldValue } from 'firebase-admin/firestore'
 
 export default async function removeMovie (
   { id, userId }: { id: string, userId: string },
@@ -14,9 +14,9 @@ export default async function removeMovie (
       { merge: true },
     )
     .then(() => {
-      console.log('Document written');
+      console.log('Document written')
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+      console.error('Error adding document: ', error)
+    })
 }

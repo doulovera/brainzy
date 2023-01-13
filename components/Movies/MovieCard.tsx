@@ -1,6 +1,6 @@
-import Card from '@components/shared/Card';
-import Image from 'next/image';
-import { CalendarBlank, StarHalf, UsersThree } from 'phosphor-react';
+import Card from '@components/shared/Card'
+import Image from 'next/image'
+import { CalendarBlank, StarHalf, UsersThree } from 'phosphor-react'
 
 type Props = {
   poster?: string;
@@ -26,23 +26,23 @@ type TruncateProps =
   type?: string;
 }
 
-const isNA = (value: string | undefined) => value === 'N/A';
+const isNA = (value: string | undefined) => value === 'N/A'
 
 const TYPES = {
   movie: '🎬 Movie',
   series: '📺 Series',
-};
+}
 
 export default function MovieCard ({
   title = '...', poster, year, type, imdbRating, released, rated, runtime, isLoading, titleId,
 }: Props & TruncateProps) {
-  const cover = poster === 'N/A' ? undefined : poster;
+  const cover = poster === 'N/A' ? undefined : poster
 
   const footer = [
     TYPES[type as keyof typeof TYPES],
     year,
     runtime,
-  ];
+  ]
 
   const info = [
     {
@@ -60,7 +60,7 @@ export default function MovieCard ({
       label: 'Rated',
       value: rated,
     },
-  ];
+  ]
 
   return (
     <div className={`h-full ${isLoading ? 'pointer-events-none animate-pulse opacity-80' : ''}`}>
@@ -116,5 +116,5 @@ export default function MovieCard ({
         </div>
       </Card>
     </div>
-  );
+  )
 }

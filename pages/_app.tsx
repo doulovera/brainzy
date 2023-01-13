@@ -1,34 +1,34 @@
-import type { AppProps } from 'next/app';
-import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query';
-import '@styles/globals.css';
-import 'normalize.css/normalize.css';
+import type { AppProps } from 'next/app'
+import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query'
+import '@styles/globals.css'
+import 'normalize.css/normalize.css'
 
-import useAuth from '@hooks/useAuth';
-import { useEffect } from 'react';
-import { generateToken, onTokenChanged } from '@services/auth';
+import useAuth from '@hooks/useAuth'
+import { useEffect } from 'react'
+import { generateToken, onTokenChanged } from '@services/auth'
 
 function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
-  const { user, setToken } = useAuth();
+  const { user, setToken } = useAuth()
 
   useEffect(() => {
     if (user) {
       generateToken()
         .then((token) => {
-          if (token) setToken(token);
+          if (token) setToken(token)
         })
         .catch((err) => {
-          console.error(err);
-        });
+          console.error(err)
+        })
     };
-  }, [user]);
+  }, [user])
 
   useEffect(() => {
     onTokenChanged((token) => {
       if (user) {
-        setToken(token);
+        setToken(token)
       }
-    });
-  }, []);
+    })
+  }, [])
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -37,7 +37,7 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
         retry: false,
       },
     },
-  });
+  })
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -45,7 +45,7 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
         <Component {...pageProps} />
       </Hydrate>
     </QueryClientProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

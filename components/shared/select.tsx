@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 type Props = {
   name: string;
@@ -31,5 +31,5 @@ export default function Select ({ name, label, options, value, onChange }: Props
         }
       </select>
     </>
-  );
+  )
 }

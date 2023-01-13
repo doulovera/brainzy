@@ -24,7 +24,6 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': [2, 'always-multiline'],
-    semi: [2, 'always'],
     camelcase: 'off',
   },
-};
+}

@@ -1,5 +1,5 @@
-import { Trash } from 'phosphor-react';
-import Button from '@components/shared/button';
+import { Trash } from 'phosphor-react'
+import Button from '@components/shared/button'
 
 type Props = {
   title: string
@@ -25,5 +25,5 @@ export default function PageTitle ({ title, year }: Props) {
         </div>
       </div>
     </section>
-  );
+  )
 }

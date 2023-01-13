@@ -1,4 +1,4 @@
-import { Plus } from 'phosphor-react';
+import { Plus } from 'phosphor-react'
 
 type CardCreateProps = {
   title: string;
@@ -18,5 +18,5 @@ export default function CardCreate ({ title, onClick }: CardCreateProps) {
         </span>
       </div>
     </button>
-  );
+  )
 }

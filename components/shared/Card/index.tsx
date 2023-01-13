@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 type CardProps = {
   className?: string;
@@ -40,5 +40,5 @@ export default function Card ({ className = '', href, title, cover, icon, childr
         </div>
       </a>
     </Link>
-  );
+  )
 }

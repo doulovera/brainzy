@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import { SVGProps } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -17,6 +17,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <rect x={3} y={7} width={18} height={13} rx={2} />
     <path d="m16 3-4 4-4-4" />
   </svg>
-);
+)
 
-export default SvgComponent;
+export default SvgComponent

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getTitleById } from '@services/backend/movies-api'
 import { verifyToken } from '@services/backend/verifyToken'
 import editTitle from '@services/backend/db/editTitle'
 
@@ -17,9 +16,7 @@ export default async function Add (req: NextApiRequest, res: NextApiResponse) {
       if (!titleId) {
         res.status(400).json({ error: 'Missing titleId' })
       } else {
-        const { imdbID } = await getTitleById({ id: titleId })
-        console.log('imdbID', imdbID)
-        await editTitle({ id: imdbID, comment, userId })
+        await editTitle({ id: titleId, userId, comment })
         res.status(200).json({ ok: 'ok' })
       }
     }

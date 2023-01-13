@@ -7,7 +7,7 @@ type Props = {
 export default function PageHeader ({ poster }: Props) {
   return (
     <header>
-      <div className="relative w-full h-60 sm:h-80 bg-zinc-500 opacity-40">
+      <div className="relative w-full h-72 sm:h-80 bg-zinc-500 opacity-40">
         {
           poster && (
             <Image

@@ -1,22 +1,16 @@
-import { db } from '../admin'
-import { FieldValue } from 'firebase-admin/firestore'
+import { MovieModel } from './models/movies'
 
 export default async function removeMovie (
   { id, userId }: { id: string, userId: string },
 ) {
-  return db
-    .collection('movies')
-    .doc(userId)
-    .set(
-      {
-        movies: FieldValue.arrayUnion(id),
-      },
-      { merge: true },
-    )
-    .then(() => {
-      console.log('Document written')
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error)
-    })
+  try {
+    const movieRef = MovieModel(userId)
+
+    await movieRef.doc(id).delete()
+    console.log('Document written')
+
+    return movieRef.get()
+  } catch (error) {
+    console.error('Error adding document: ', error)
+  }
 }

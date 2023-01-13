@@ -8,7 +8,7 @@ type CardCreateProps = {
 export default function CardCreate ({ title, onClick }: CardCreateProps) {
   return (
     <button
-      className="block w-full h-full bg-gray-700 rounded-lg hover:opacity-80 opacity-60 border-dashed border-2 border-gray-400"
+      className="block w-full h-full bg-gray-700 rounded-lg hover:opacity-80 opacity-60 border-dashed border-2 border-gray-400 transition duration-150"
       onClick={onClick}
     >
       <div className="flex flex-col items-center justify-center gap-2 h-full">

@@ -13,12 +13,12 @@ export default function PageTitle ({ handleDelete, title, year }: Props) {
       <h2 className="text-5xl font-bold">
         {title} ({year})
       </h2>
-      <div className="flex w-full sm:w-2/5 gap-3">
-        <div className="flex-1">
+      <div className="flex justify-end w-full sm:w-2/6 gap-3">
+        {/* <div className="flex-1">
           <Button disabled>
             Save to Notion
           </Button>
-        </div>
+        </div> */}
         <div className="aspect-square w-14">
           <Button outlined onClick={handleDelete}>
             <Trash size={24} />

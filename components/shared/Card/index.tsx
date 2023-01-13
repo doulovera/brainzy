@@ -15,7 +15,7 @@ export default function Card ({ className = '', href, title, cover, icon, childr
   return (
     <Link href={href}>
       <a className={`group flex flex-col w-full h-full rounded-lg bg-zinc-800 border-zinc-700 border-2 border-solid overflow-hidden ${className}`}>
-        <div className="relative brightness-50 grayscale group-hover:brightness-75 group-hover:grayscale-0 w-full h-20">
+        <div className="relative brightness-50 grayscale transition duration-150 group-hover:brightness-75 group-hover:grayscale-0 w-full h-20">
           {
             cover
               ? (

@@ -16,7 +16,7 @@ const Title: NextPage = () => {
 
   const { data, isFetched } = useQuery({
     queryKey: ['movie_title'],
-    queryFn: () => getTitle({ id: titleId as string }),
+    queryFn: () => getTitle({ id: titleId as string, comments: true }),
     initialData: [],
     enabled: !!titleId,
   })
@@ -35,7 +35,7 @@ const Title: NextPage = () => {
     )
   }
 
-  const { title: response } = data
+  const { title: response, comments } = data
 
   const titlePageValues = {
     imdbRating: response.imdbRating,
@@ -66,6 +66,7 @@ const Title: NextPage = () => {
         isFetched && (
           <TitlePage
             handleSubmit={handleSubmit}
+            comments={comments}
             {...titlePageValues}
           />
         )

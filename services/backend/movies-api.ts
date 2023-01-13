@@ -67,5 +67,6 @@ export async function getManyTitles (
 export async function getTitleComments (
   { userId, titleId }: { userId: string; titleId: string },
 ) {
-  return getTitleInDb({ userId, titleId })
+  const comments = await getTitleInDb({ userId, titleId })
+  return comments?.comment
 }

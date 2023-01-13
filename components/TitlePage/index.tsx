@@ -16,6 +16,7 @@ type Props = {
   released: string
   rated: string
   runtime: string
+  comments: string
 }
 
 export default function TitlePage ({
@@ -28,6 +29,7 @@ export default function TitlePage ({
   released,
   rated,
   runtime,
+  comments,
 }: Props) {
   const properties = [
     {
@@ -64,7 +66,7 @@ export default function TitlePage ({
         <div className="px-3 py-4">
           <PageTitle title={title} year={year} />
           <PageInfo properties={properties} />
-          <Comments />
+          <Comments comments={comments} />
           <div className="mt-4">
             <Button type="submit">
               Save

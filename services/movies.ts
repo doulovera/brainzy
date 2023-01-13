@@ -2,12 +2,12 @@ import { API_URL } from 'constants/API_KEYS'
 import { get, post } from 'utils/fetch'
 
 export async function getTitle (
-  { id }: { id: string },
+  { id, comments }: { id: string, comments?: boolean },
 ) {
   try {
     return get({
       url: `${API_URL}/movies/title`,
-      params: { id, comments: 'true' },
+      params: { id, comments: `${comments}` },
     })
   } catch (error) {
     console.error(error)

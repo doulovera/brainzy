@@ -1,3 +1,4 @@
+import { logError, logSuccess } from 'utils/log'
 import { MovieModel } from './models/movies'
 
 export default async function removeMovie (
@@ -7,10 +8,10 @@ export default async function removeMovie (
     const movieRef = MovieModel(userId)
 
     await movieRef.doc(id).delete()
-    console.log('Document written')
+    logSuccess('Document written')
 
     return movieRef.get()
   } catch (error) {
-    console.error('Error adding document: ', error)
+    logError('Error adding document: ', error)
   }
 }

@@ -1,3 +1,4 @@
+import { logError, logSuccess } from 'utils/log'
 import { MovieModel } from './models/movies'
 
 export default async function addMovie (
@@ -7,10 +8,10 @@ export default async function addMovie (
     const moviesRef = MovieModel(userId)
     const movies = await moviesRef.doc(id).set({ comment })
 
-    console.log('Document written')
+    logSuccess('Document written')
 
     return movies
   } catch (error) {
-    console.error('Error adding document: ', error)
+    logError('Error adding document: ', error)
   }
 }

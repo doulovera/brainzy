@@ -86,7 +86,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
           }
           <div className={`flex flex-col gap-1 max-h-[400px] overflow-y-auto ${isLoading ? 'opacity-30' : ''}`}>
             {
-              (data.titles?.length > 0 && !isError) && data.titles.slice(0, 5).map((result: any) => (
+              (data.titles?.length > 0 && !isError) && data.titles.map((result: any) => (
                 <MovieResultCard
                   key={result.imdbID}
                   cover={result.Poster}

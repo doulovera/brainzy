@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.19.0",

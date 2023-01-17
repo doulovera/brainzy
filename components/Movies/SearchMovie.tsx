@@ -18,6 +18,7 @@ type Props = {
 export default function SearchMovie ({ showModal, setShowModal, onAddMovie, userId }: Props) {
   const [term, setTerm] = useState('')
   const [type, setType] = useState<'movie' | 'series'>('movie')
+  const [isAddingMovie, setIsAddingMovie] = useState(false)
 
   const { data, isFetching: isLoading, isError, error, refetch } = useQuery({
     queryKey: ['search'],
@@ -39,6 +40,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
   }, [showModal])
 
   const handleAddMovie = async (titleId: string) => {
+    setIsAddingMovie(true)
     await addTitle({
       titleId,
       userId,
@@ -84,7 +86,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
               </p>
             )
           }
-          <div className={`flex flex-col gap-1 max-h-[400px] overflow-y-auto ${isLoading ? 'opacity-30' : ''}`}>
+          <div className={`flex flex-col gap-1 max-h-[400px] overflow-y-auto ${(isLoading || isAddingMovie) ? 'opacity-30' : ''}`}>
             {
               (data.titles?.length > 0 && !isError) && data.titles.map((result: any) => (
                 <MovieResultCard
@@ -99,7 +101,7 @@ export default function SearchMovie ({ showModal, setShowModal, onAddMovie, user
             }
           </div>
         </div>
-        <Button type="submit" isLoading={isLoading}>
+        <Button type="submit" isLoading={isLoading || isAddingMovie}>
           <span className="flex justify-center items-center gap-3">
             <MagnifyingGlass size={18} />
             Search

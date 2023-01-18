@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard',
-    'next/core-web-vitals',
+    // 'next/core-web-vitals',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -25,5 +25,11 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': [2, 'always-multiline'],
     camelcase: 'off',
+    'react/react-in-jsx-scope': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 }

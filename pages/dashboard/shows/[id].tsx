@@ -1,15 +1,17 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import { useQuery } from '@tanstack/react-query'
 import DashboardLayout from '@components/DashboardLayout'
 import TitlePage from '@components/TitlePage'
 import useAuth from '@hooks/useAuth'
 import { deleteTitle, editTitle, getTitle } from '@services/movies'
+import { toastSuccess } from 'utils/toasts'
 
 const Title: NextPage = () => {
   const { user } = useAuth()
   const { userId } = user || {} // not show if user is not logged in
+  const [isLoading, setIsLoading] = useState(false)
 
   const router = useRouter()
   const { id: titleId } = router.query
@@ -50,6 +52,7 @@ const Title: NextPage = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setIsLoading(true)
 
     const comment = (event.target as HTMLFormElement).comment.value
 
@@ -58,11 +61,16 @@ const Title: NextPage = () => {
       comment,
       userId,
     })
+
+    setIsLoading(false)
+    toastSuccess('Comment added successfully')
   }
 
   const handleDelete = async () => {
     await deleteTitle({ titleId: titleId as string })
     router.push('/dashboard/shows')
+
+    toastSuccess('Title deleted successfully')
   }
 
   return (
@@ -73,6 +81,7 @@ const Title: NextPage = () => {
             handleSubmit={handleSubmit}
             handleDelete={handleDelete}
             comments={comments}
+            isLoading={isLoading}
             {...titlePageValues}
           />
         )

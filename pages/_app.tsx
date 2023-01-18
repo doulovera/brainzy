@@ -6,6 +6,7 @@ import 'normalize.css/normalize.css'
 import useAuth from '@hooks/useAuth'
 import { useEffect } from 'react'
 import { generateToken, onTokenChanged } from '@services/auth'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
   const { user, setToken } = useAuth()
@@ -43,6 +44,7 @@ function MyApp ({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <Component {...pageProps} />
+        <Toaster />
       </Hydrate>
     </QueryClientProvider>
   )

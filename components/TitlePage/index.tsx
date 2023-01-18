@@ -18,6 +18,7 @@ type Props = {
   rated: string
   runtime: string
   comments: string
+  isLoading: boolean
 }
 
 export default function TitlePage ({
@@ -32,6 +33,7 @@ export default function TitlePage ({
   rated,
   runtime,
   comments,
+  isLoading,
 }: Props) {
   const properties = [
     {
@@ -70,7 +72,7 @@ export default function TitlePage ({
           <PageInfo properties={properties} />
           <Comments comments={comments} />
           <div className="mt-4">
-            <Button type="submit">
+            <Button type="submit" isLoading={isLoading}>
               Save
             </Button>
           </div>

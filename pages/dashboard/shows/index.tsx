@@ -7,6 +7,7 @@ import SearchMovie from '@components/Movies/SearchMovie'
 import useAuth from '@hooks/useAuth'
 import MovieList from '@components/Movies/MovieList'
 import SkeletonMovieList from '@components/Movies/SkeletonMovieList'
+import { toastSuccess } from 'utils/toasts'
 
 const Shows: NextPage<{ titles: string[] }> = (props) => {
   const { user } = useAuth()
@@ -27,8 +28,9 @@ const Shows: NextPage<{ titles: string[] }> = (props) => {
     setShowModal(true)
   }
 
-  const handleAddMovie = async ({ newTitle }: { newTitle: any }) => {
+  const handleAddMovie = ({ newTitle }: { newTitle: any }) => {
     setAddedMovies((prev) => [...(prev || []), newTitle])
+    toastSuccess('Movie added to your list')
     setShowModal(false)
   }
 

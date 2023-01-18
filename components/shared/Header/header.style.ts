@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
   width: 100%;
   background-color: var(--bg-primary);
   border-bottom: 2px solid var(--bg-secondary);
-  z-index: 100000000000000000;
+  z-index: 100;
   
   & h1 {
     margin: 0;

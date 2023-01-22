@@ -1,5 +1,5 @@
-import { logError, logSuccess } from 'utils/log'
-import { MovieModel } from './models/movies'
+import { logError, logSuccess } from '@/lib/log'
+import { MovieModel } from './models/movies.model'
 
 export default async function editTitle (
   { id, comment, userId }: { id: string, comment?: string, userId: string },

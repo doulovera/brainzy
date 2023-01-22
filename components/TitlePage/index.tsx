@@ -3,7 +3,7 @@ import PageHeader from './page-header'
 import PageTitle from './page-title'
 import PageInfo from './page-info'
 import Comments from './comments'
-import { isNA } from 'utils/is-na'
+import { isNA } from '@/lib/utils'
 import Button from '@components/shared/button'
 
 type Props = {

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import addMovie from '@services/backend/db/addMovie'
-import { getTitleById } from '@services/backend/movies-api'
-import { verifyToken } from '@services/backend/verifyToken'
+import addMovie from '@/lib/db/addMovie'
+import { getTitleById } from '@/lib/api/movies/movies-api'
+import { verifyToken } from '@/lib/api/verify-token'
 
 export default async function Add (req: NextApiRequest, res: NextApiResponse) {
   try {

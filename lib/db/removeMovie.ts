@@ -1,5 +1,5 @@
-import { logError, logSuccess } from 'utils/log'
-import { MovieModel } from './models/movies'
+import { logError, logSuccess } from '@/lib/log'
+import { MovieModel } from './models/movies.model'
 
 export default async function removeMovie (
   { id, userId }: { id: string, userId: string },

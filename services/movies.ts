@@ -1,5 +1,5 @@
-import { API_URL } from 'constants/API_KEYS'
-import { get, post } from 'utils/fetch'
+import { API_URL } from '@/lib/constants'
+import { get, post } from '@/lib/fetch'
 
 export async function getTitle (
   { id, comments }: { id: string, comments?: boolean },

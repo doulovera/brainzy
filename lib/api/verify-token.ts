@@ -1,4 +1,4 @@
-import { auth } from '@services/backend/admin'
+import { auth } from './admin'
 
 interface Response {
   error: boolean

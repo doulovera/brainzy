@@ -1,6 +1,6 @@
-import { MOVIE_API } from 'constants/API_KEYS'
-import { get } from 'utils/fetch'
-import getTitleInDb from './db/getTitle'
+import { MOVIE_API } from '@/lib/constants'
+import getTitleInDb from '@/lib/db/getTitle'
+import { get } from '@/lib/fetch'
 
 const URL = 'http://www.omdbapi.com/'
 

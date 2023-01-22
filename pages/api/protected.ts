@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { verifyToken } from '@services/backend/verifyToken'
+import { verifyToken } from '@/lib/api/verify-token'
 
 export default async function Protected (req: NextApiRequest, res: NextApiResponse) {
   try {

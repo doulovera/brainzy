@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { search } from '@services/backend/movies-api'
-import { verifyToken } from '@services/backend/verifyToken'
+import { search } from '@/lib/api/movies/movies-api'
+import { verifyToken } from '@/lib/api/verify-token'
 
 export default async function Search (req: NextApiRequest, res: NextApiResponse) {
   try {

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { verifyToken } from '@services/backend/verifyToken'
-import editTitle from '@services/backend/db/editTitle'
+import { verifyToken } from '@/lib/api/verify-token'
+import editTitle from '@/lib/db/editTitle'
 
 export default async function Add (req: NextApiRequest, res: NextApiResponse) {
   try {

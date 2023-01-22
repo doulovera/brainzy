@@ -6,7 +6,7 @@ import DashboardLayout from '@components/DashboardLayout'
 import TitlePage from '@components/TitlePage'
 import useAuth from '@hooks/useAuth'
 import { deleteTitle, editTitle, getTitle } from '@services/movies'
-import { toastSuccess } from 'utils/toasts'
+import { toastSuccess } from '@/lib/toasts'
 
 const Title: NextPage = () => {
   const { user } = useAuth()

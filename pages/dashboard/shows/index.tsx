@@ -7,7 +7,7 @@ import SearchMovie from '@components/Movies/SearchMovie'
 import useAuth from '@hooks/useAuth'
 import MovieList from '@components/Movies/MovieList'
 import SkeletonMovieList from '@components/Movies/SkeletonMovieList'
-import { toastSuccess } from 'utils/toasts'
+import { toastSuccess } from '@/lib/toasts'
 
 const Shows: NextPage<{ titles: string[] }> = (props) => {
   const { user } = useAuth()

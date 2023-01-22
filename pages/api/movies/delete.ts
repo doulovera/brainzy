@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { verifyToken } from '@services/backend/verifyToken'
-import removeMovie from '@services/backend/db/removeMovie'
+import { verifyToken } from '@/lib/api/verify-token'
+import removeMovie from '@/lib/db/removeMovie'
 
 export default async function Delete (req: NextApiRequest, res: NextApiResponse) {
   try {

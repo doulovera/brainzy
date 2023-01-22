@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getTitleById, getTitleComments } from '@services/backend/movies-api'
-import { verifyToken } from '@services/backend/verifyToken'
+import { getTitleById, getTitleComments } from '@/lib/api/movies/movies-api'
+import { verifyToken } from '@/lib/api/verify-token'
 
 export default async function Title (req: NextApiRequest, res: NextApiResponse) {
   try {

@@ -1,4 +1,4 @@
-import { MovieModel } from './models/movies'
+import { MovieModel } from './models/movies.model'
 
 export default async function getUserMovies (
   { userId }: { userId: string },

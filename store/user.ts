@@ -1,5 +1,5 @@
-import create from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { signInAuth, signOutAuth } from 'services/auth'
 
 // @ts-ignore
@@ -47,6 +47,6 @@ export const useUser = create(persist<Store>(
   }),
   {
     name: 'user',
-    getStorage: () => sessionStorage,
+    storage: createJSONStorage(() => sessionStorage),
   },
 ))

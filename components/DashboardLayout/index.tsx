@@ -23,7 +23,7 @@ export default function DashboardLayout ({ children, title = 'Dashboard' }: Prop
   return (
     <>
       <Head>
-        <title>{title} - Brainzy</title>
+        <title>{`${title} - Brainzy`}</title>
       </Head>
       <ThemeProvider theme={(theme === 'dark') ? darkMode : lightMode}>
         <GlobalStyles />
